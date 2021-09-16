@@ -1,0 +1,3 @@
+module LocadoraJogos {
+	requires junit;
+}

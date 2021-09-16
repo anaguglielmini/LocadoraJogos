@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename compilation unit &apos;qts.locadora.util.Datautil.java&apos; to &apos;DataUtil.java&apos;&#x0D;&#x0A;- Original project: &apos;LocadoraJogos&apos;&#x0D;&#x0A;- Original element: &apos;qts.locadora.util.Datautil.java&apos;&#x0D;&#x0A;- Renamed element: &apos;qts.locadora.util.DataUtil.java&apos;" description="Rename compilation unit &apos;Datautil.java&apos;" flags="2" id="org.eclipse.jdt.ui.rename.compilationunit" input="/src&lt;qts.locadora.util{Datautil.java" name="DataUtil.java" references="false" stamp="1631744990861" version="1.0"/>
+</session>

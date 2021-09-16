@@ -1,0 +1,52 @@
+package qts.locadora;
+
+import java.util.Date;
+import qts.locadora.service.LocacaoService;
+import qts.locadora.service.LancandoExcecoes;
+import qts.locador.exception.JogoSemEstoqueException;
+import qts.locadora.Cliente;
+import qts.locadora.Jogo;
+import qts.locadora.Locacao;
+import qts.locadora.util.DataUtil;
+
+import org.junit.Assert;
+import org.junit.Test;
+
+public class LocacaoServiceTest {
+    @Test
+    public void teste() throws Exception {
+
+        /*cenario para teste do metodo alugarJogo*/
+
+        Cliente cliente = new Cliente("Antonio");
+        Jogo jogo = new Jogo("Harry Potter", 15.00, 1);
+
+        /*ação na classe LocacaoService*/
+
+        LocacaoService locacaoService = new LocacaoService();
+        Locacao locacao;
+
+        locacao = locacaoService.alugarJogo(cliente, jogo);
+
+        /*verificação da locação*/
+
+        Assert.assertTrue(locacao.getJogo().getNome().equals(jogo.getNome()));
+        Assert.assertTrue(locacao.getCliente().getNome().equals(cliente.getNome()));
+        Assert.assertTrue("Erro no valor do jogo", locacao.getValor()==jogo.getValor());
+        Assert.assertTrue(new DataUtil().verificarDatasIguais(locacao.getRetirada(), new Date()));
+    }
+
+    @Test (expected = JogoSemEstoqueException.class) //Exception generica
+    public void testSemEstoque() throws Exception {
+        /*cenario para teste do metodo alugarJogo sem estoque*/
+
+        Cliente cliente = new Cliente("Antonio");
+        Jogo jogo = new Jogo("Harry Potter", 15.00, 0);
+
+        /*ação na classe LocacaoService*/
+
+        LocacaoService locacaoService = new LocacaoService();
+        Locacao locacao;
+        locacao = locacaoService.alugarJogo(cliente, jogo);
+    }
+}
